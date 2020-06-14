@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="es-ES">
+    <head>
+        <title>Detalles reserva</title>
+        <style>
+          p{
+            font-family: Arial, Helvetica, sans-serif;
+          }
+          p.saludo{
+            font-weight: bold;
+          }
+          table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
+          div.content{
+            padding: 25px;
+          }
+        </style>
+    </head>
+    <body>
+       <div class="content">
+           <div>
+               <div>
+                   <p class="saludo">Hola {{nombre_cliente}},</p>
+                   <p>Tu reserva se ha completado con exito.</p>
+                   <p>N&#250;mero de reserva: #{{reserva_id}}</p>
+                   <p>Fecha de la reserva: {{reserva_fecha}}</p>
+                   <p>Puedes seguir buscando trayectos en <a href="#">jobandcar.com</a>
+                   <p>Te recordamos los detalles de tu reserva</p>
+                   
+                   <table>
+                      <thead>
+                        <tr>
+                          <th>Reserva</th>
+                          <th>Origen</th>
+                          <th>Destino</th>
+                          <th>Fecha</th>
+                          <th>Precio</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>{{reserva_id}}</th>
+                          <td>{{origen}}</td>
+                          <td>{{destino}}</td>
+                          <td>{{fecha}}</td>
+                          <td>{{precio}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                   <p>El Team de Job&#38;Car te agradece por tu reserva. </p>
+                </div>
+           </div>
+       </div>
+    </body>
+</html>

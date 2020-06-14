@@ -1,0 +1,31 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block body %}
+<div class="col mt-4 animate__animated animate__fadeIn animate__fast">
+	<h3>Tu cartera</h3>
+  {% if reservas%}
+	<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Pásajero</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for i in reservas%}
+    <tr>
+      <th scope="row">{{i.comprador.first_name}}</th>
+      <td>{{i.fecha_pago}}</td>
+      <td>{{i.cantidad}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<hr>
+<h6 class="text-center mb-3">Aún no tienes nada en tu cartera</h6>
+<img src="{%  static 'appjobcar/bootstrap/imagenes/wallet.svg' %}" class="rounded mx-auto d-block w-50 "  alt="no hay resultados">
+{% endif %}
+</div>
+{% endblock %}

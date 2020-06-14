@@ -1,0 +1,105 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+<link  rel="stylesheet" href="{%  static 'css/proyecto/buscar.css' %}">
+{% endblock %}
+{% block body %}
+<div class="col mt-5 py-6 py-md-7 animate__animated animate__fadeIn animate__fast">
+	<div class="search-bar pl-4 pt-3 buscardor">
+		<form method="POST" action="{% url 'buscar' %}">
+		{% csrf_token %}
+			<div class="form-row align-items-center ">
+				<div class="col-lg-3 d-flex align-items-center form-group">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fas fa-map-pin"></i>
+							</div>
+						</div>
+						{{form.origen}}
+					</div>
+				</div>
+				<div class="col-lg-3 d-flex align-items-center form-group">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fas fa-map-marker-alt"></i>
+							</div>
+						</div>
+						{{form.destino}}
+					</div>
+				</div>
+				<div class="col-lg-2 d-flex align-items-center form-group">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fas fa-clock"></i>
+							</div>
+						</div>
+						{{form.hora}}
+					</div>
+				</div>
+				<div class="col-lg-2 d-flex align-items-center form-group">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="far fa-calendar-alt"></i>
+							</div>
+						</div>
+						{{form.fecha}}
+					</div>
+				</div>
+				<div class="col-lg-2 d-flex align-items-center form-group">
+                	<input type="submit" class="btn btn-info" value="Buscar"/>
+                </div>
+			</div>
+		</form>
+	</div>
+	<div class="mt-5">
+	{% if viajes%}
+	{% for i in viajes %}
+	<a href="{% url 'viaje' i.id %}" class="viaje text-decoration-none">
+		<div class="shadow-lg p-3 mb-5 bg-white rounded contenedor-viaje">
+		<div class="mb-3">
+			<div class="row no-gutters">
+				<div class="col-md-8 col-12">
+					<div class="card-body ">
+						<h5 class="card-title fecha">{{ i.fecha_salida|date:"D d M " }}</h5>
+						<div class="row mb-3 mt-3">
+							<div class="col-4">
+								<p class="card-text"><span class="icon"><i class="fas fa-map-pin"></i></span> {{i.hora_recogida|time:"H:i"}}</p>
+							</div>
+							<div class="col-6">
+								<p class="card-text">{{i.origen}}</p>
+							</div>
+							<div class="col-2">
+								<p class="card-text text-right font-weight-bold">{{i.precio_plaza}}€</p>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-4">
+								<p class="card-text"><span class="icon"><i class="fas fa-map-marker-alt"></i></span> {{i.hora_llegada|time:"H:i"}}</p>
+							</div>
+							<div class="col-8">
+								<p class="card-text">{{i.destino}}</p>
+							</div>
+						</div>
+						<p class="card-text text-capitalize">
+							<img src="{{i.usuario.foto.url}}" width="50" height="50" class="rounded-circle" alt="foto perfil"> {{i.usuario.first_name}} 
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</a>
+	{% endfor %}
+	{% else %}
+	<div>
+		<h6 class="text-center mb-3">¡Ups! Parece que no hay resultados para tu busqueda</h6>
+		<img src="{%  static 'appjobcar/bootstrap/imagenes/no-resultados.svg' %}" class="rounded mx-auto d-block w-50 "  alt="no hay resultados">
+	</div>
+	{% endif %}
+	</div>
+</div>
+{% endblock %}

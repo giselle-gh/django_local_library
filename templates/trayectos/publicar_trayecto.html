@@ -1,0 +1,103 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block body %}
+<div class="animate__animated animate__fadeIn  col-12 mt-5">
+	<h3 class="text-center mt-4" style="font-size: 40px;">Publica tu trayecto</h3>
+	{% if messages %}
+	<div class="row mt-5">
+  		<div class="col-12 mt-2">
+      	{% for message in messages %}
+          <div {% if message.tags %} role="alert" class="alert alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else%}{{ message.tags }}{% endif%}" {% endif %} >
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+          </div>
+      	{% endfor %}
+  		</div>
+	</div>
+	{% endif %}
+	<form class="mt-3"action="{% url 'publicar'%}" method="POST">
+	{% csrf_token %}
+		<div class="row">
+			<div class="col-md-6 col-sm-12">
+				<div class="form-group">
+					<label class="animate__animated animate__fadeInDown">¿Desde dónde sales?</label>
+					<div class="input-group animate__animated animate__fadeInDown">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-map-pin"></i></span>
+						</div>
+						{{form.origen}}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="animate__animated animate__fadeInDown">¿Cúantos pasajeros van a compañarte en este trayecto?</label>
+					<div class="input-group animate__animated animate__fadeInDown">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user-friends"></i></span>
+						</div>
+						{{form.num_pasajeros}}
+					</div>
+				</div>
+				<div class="form-group ">
+					<label class="animate__animated animate__fadeInDown">¿A qué hora recogerás a tus pasajeros?</label>
+					<div class="input-group animate__animated animate__fadeInDown">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-clock"></i></span>
+						</div>
+						{{form.hora_recogida}}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="animate__animated animate__fadeInDown">Precio por plaza</label>
+					<div class="input-group animate__animated animate__fadeInDown">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-money-bill"></i></span>
+						</div>
+						{{form.precio_plaza}}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="form-group">
+					<label class="animate__animated animate__fadeInDown">¿A donde vas?</label>
+					<div class="input-group animate__animated animate__fadeInDown">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+						</div>
+						{{form.destino}}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="animate__animated animate__fadeInDown">Elige la fecha</label>
+					<div class="input-group animate__animated animate__fadeInDown">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+						{{form.fecha_salida}}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="animate__animated animate__fadeInDown">Indica la hora aproximada de llegada al destino</label>
+					<div class="input-group animate__animated animate__fadeInDown">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-building"></i></span>
+						</div>
+						{{form.hora_llegada}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="form-group">
+				<div class="form-check animate__animated animate__fadeInDown">
+					{{form.check_carne}}
+					<label class="form-check-label" for="gridCheck">Confirmo que estoy en posesión de un permiso de conducción de tipo B en vigencia y un seguro de terceros en vigor</label>
+				</div>
+			</div>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Publicar"/>
+		<input type="reset" value="Borrar" class="btn btn-secondary">
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+
+img.banner{
+    width: 30%;
+}
+p.icono{
+	font-size: 225%; 
+	color: #00AFF5;
+}
+h3{
+	font-family: 'Montserrat', sans-serif; 
+	font-size: 40px; 
+	color: #8D989C
+}
+div.contacto{
+	background-color: #EDEDED; font-family: 'Montserrat', sans-serif;
+}
+span.telefono{
+	color: #388DFE;
+}

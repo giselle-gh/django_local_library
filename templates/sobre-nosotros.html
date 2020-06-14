@@ -1,0 +1,28 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+<link  rel="stylesheet" href="{%  static 'css/proyecto/sobrenosotros.css' %}">
+{% endblock %}
+{% block body %}
+<div class="contenedor animate__animated animate__fadeIn animate__fast">
+     <div class="header">
+		<h6 class="nombre">Sobre Nosotros</h6> 
+	</div>
+	<div class="main">
+		<div class="contenedor-texto">
+                    <h2 class="titulo">En Job&Car queremos ayudarte<br> a ahorrar <span class="typed"></span></h2>
+
+                    <p>Job&Car nació con la idea de mejorar la forma tradicional de movernos ¿Por qué viajar solo? ¿Por qué perder tiempo esperando un transporte? ¿Por qué no ayudar al medio ambiente mientras nos movemos? La red social pone en contacto a pasajeros con conductores que comparten un destino similar o cercano en el mismo día.</p>
+                    <p>Los usuarios comparten gastos de viaje y tienen la posibilidad de conocer a más gente, mientras ayudan a cuidar el medio ambiente.</p>
+
+                    <a href="{% url 'publicar'%}" class="btn-link activo">Publica un viaje</a>
+                    <a href="{% url 'buscar' %}" class="btn-link">Buscar</a>
+          </div>
+	</div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+<script src="{% static 'js/main.js'%}"></script>
+{% endblock %}

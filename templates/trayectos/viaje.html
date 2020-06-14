@@ -1,0 +1,88 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+<link  rel="stylesheet" href="{%  static 'css/proyecto/viaje.css' %}">
+{% endblock %}
+{% block body %}
+<div class="col mt-5">
+	<div class="row">
+		<div class="col-md-7 col-sm-12">
+			<h3 class="">{{trayecto.fecha_salida|date:"D d M "}} a {{trayecto.hora_recogida|time:"H:i"}}</h3>
+			<div class="row mb-3 mt-3">
+				<div class="col-3">
+					<p class="card-text"><span class="icon"><i class="fas fa-map-pin"></i></span> {{trayecto.hora_recogida|time:"H:i"}}</p>
+				</div>							
+				<div class="col-9">
+					<p class="card-text">{{trayecto.origen}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<p class="card-text"><span class="icon"><i class="fas fa-map-marker-alt"></i></span> {{trayecto.hora_llegada|time:"H:i"}}</p>
+				</div>
+				<div class="col-9">
+					<p class="card-text">{{trayecto.destino}}</p>
+				</div>
+				<div class="col-12">
+				<div class="card mb-3 mt-4" style="width: 19rem;">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+							<img src="{{trayecto.usuario.foto.url}}" width="50" height="50"  class="rounded-circle mt-4 ml-3 " alt="foto perfil">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title text-capitalize">{{trayecto.usuario.first_name}}</h5>
+								<p><small class="text-muted">Usuario desde: {{trayecto.usuario.date_joined|date:"M d, Y"}}</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="col-md-5 col-sm-12">
+			<div class="borde-azul card mb-3 mt-4">
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="card-body">
+								<h5>{{trayecto.asiento_libre}} {% if trayecto.asiento_libre == 1 %}Asiento disponible{%else%} Asientos disponibles{%endif%}</h5>
+							</div>
+							<ul class="list-group list-group-flush">
+								{%   for i in lista %}
+									<li class="list-group-item">
+										<p class="card-text text-capitalize">
+											<img src="{%  static 'appjobcar/bootstrap/imagenes/asiento.svg' %}" width="50" height="50" alt="foto asiento"> Asiento libre
+										</p>
+									</li>
+								{% endfor %}
+							</ul>
+							{% if trayecto.usuario != request.user and trayecto.asiento_libre > 0 %}
+							<div class="card-body">
+								<a href="{% url 'pagar' trayecto.id %}" class="reservar float-right mb-3" role="button">Reservar</a>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="card mb-3 mt-4 borde-azul">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+							<img  src="{%  static 'appjobcar/bootstrap/imagenes/coche.svg' %}"  width="50" height="50"  class="rounded-circle mt-4 ml-3 " alt="foto perfil">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title text-capitalize">Coche</h5>
+								{% if coche %}
+								<p><span>Matricula: </span>{{coche.matricula}}</p>
+								<p><span>Modelo: </span>{{coche.modelo}}</p>
+								{% else %}
+								<p>Este usuario aún no ha añadido ningún coche</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

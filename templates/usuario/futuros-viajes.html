@@ -1,0 +1,97 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+<link  rel="stylesheet" href="{%  static 'css/proyecto/futuros-viajes.css' %}">
+{% endblock %}
+{% block body %}
+<div class="col mt-5 animate__animated animate__fadeIn animate__fast">
+	<h3>Tus viajes publicados</h3>
+	<hr>
+	{% if viajes_publicados %}
+	{% for i in viajes_publicados %}
+	<a href="{% url 'viaje' i.id %}" class="viaje text-decoration-none">
+		<div class="shadow-lg p-3 mb-5 bg-white rounded contenedor-viaje">
+		<div class="mb-3">
+			<div class="row no-gutters">
+				<div class="col-md-8 col-12">
+					<div class="card-body ">
+						<h5 class="card-title fecha">{{ i.fecha_salida|date:"D d M " }}</h5>
+						<div class="row mb-3 mt-3">
+							<div class="col-4">
+								<p class="card-text"><span class="icon"><i class="fas fa-map-pin"></i></span> {{i.hora_recogida|time:"H:i"}}</p>
+							</div>
+							<div class="col-6">
+								<p class="card-text">{{i.origen}}</p>
+							</div>
+							<div class="col-2">
+								<p class="card-text text-right font-weight-bold">{{i.precio_plaza}}€</p>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-4">
+								<p class="card-text"><span class="icon"><i class="fas fa-map-marker-alt"></i></span> {{i.hora_recogida|time:"H:i"}}</p>
+							</div>
+							<div class="col-8">
+								<p class="card-text">{{i.destino}}</p>
+							</div>
+						</div>
+						<p class="card-text text-capitalize">
+							<img src="{{user.foto.url}}" width="50" height="50" class="rounded-circle" alt="foto perfil"> {{user.first_name}}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</a>
+	{% endfor %}
+	{% else %}
+	<div>
+		<h6 class="text-center mb-3">Aún no has publicado ningún viaje</h6>
+	</div>
+	{% endif %}
+	<h3>Tus viajes reservados</h3>
+	<hr>
+	{% if reservas %}
+	{% for i in reservas %}
+	<a href="{% url 'viaje' i.trayecto.id %}" class="viaje text-decoration-none">
+		<div class="shadow-lg p-3 mb-5 bg-white rounded contenedor-viaje">
+		<div class="mb-3">
+			<div class="row no-gutters">
+				<div class="col-md-8 col-12">
+					<div class="card-body ">
+						<h5 class="card-title fecha">{{ i.trayecto.fecha_salida|date:"D d M " }}</h5>
+						<div class="row mb-3 mt-3">
+							<div class="col-4">
+								<p class="card-text"><span class="icon"><i class="fas fa-map-pin"></i></span> {{i.trayecto.hora_recogida|time:"H:i"}}</p>
+							</div>
+							<div class="col-6">
+								<p class="card-text">{{i.trayecto.origen}}</p>
+							</div>
+							<div class="col-2">
+								<p class="card-text text-right font-weight-bold">{{i.trayecto.precio_plaza}}€</p>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-4">
+								<p class="card-text"><span class="icon"><i class="fas fa-map-marker-alt"></i></span> {{i.trayecto.hora_recogida|time:"H:i"}}</p>
+							</div>
+							<div class="col-8">
+								<p class="card-text">{{i.trayecto.destino}}</p>
+							</div>
+						</div>
+						<p class="card-text text-capitalize">
+							<img src="{{i.trayecto.usuario.foto.url}}" width="50" height="50" class="rounded-circle" alt="foto perfil"> {{i.trayecto.usuario.first_name}}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</a>
+	{% endfor %}
+	{% else %}
+	<h6 class="text-center mb-3">Aún no has reservado ningún viaje</h6>
+	{% endif%}
+</div>
+{% endblock %}

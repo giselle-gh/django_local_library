@@ -1,0 +1,14 @@
+div.buscardor{
+	background: #fff;
+	box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+}
+a.viaje{
+	 color: #226172;
+	 font-family: 'Open Sans', sans-serif;
+}
+div.contenedor-viaje{
+	max-width: 640px;
+}
+h5.fecha{
+	 font-size: 150%;
+}

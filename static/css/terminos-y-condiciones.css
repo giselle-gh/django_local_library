@@ -1,0 +1,12 @@
+h3{
+	font-family: 'Montserrat', sans-serif; 
+	font-size: 40px; 
+	color: #49606A
+}
+li,p{
+	font-family: 'Montserrat', sans-serif;
+}
+li.titulo{
+	color: #323741;
+	font-weight: bold;
+}

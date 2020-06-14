@@ -1,0 +1,78 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+<link  rel="stylesheet" href="{%  static 'css/proyecto/home.css' %}">
+{% endblock %}
+{% block body %}
+<div class="row animate__animated animate__fadeIn animate__fast">
+	<div class="col-12">
+		 <div class="carousel slide" data-ride="carousel">
+  		<div class="carousel-inner">
+    		<div class="carousel-item active">
+      			<img src="{%  static 'appjobcar/bootstrap/imagenes/portada.jpg' %}" class="d-block w-100" alt="portada">
+      			<div class="carousel-caption d-none d-md-block">
+        			<h5 class="img-title">Comparte coche en tus trayectos diarios</h5>
+              {% if request.user.is_authenticated %}
+              <a class="btn btn-primary" href="{% url 'buscar' %}" role="button">Buscar</a>
+              {% else %}
+               <a class="btn btn-primary" href="{% url 'registro' %}" role="button">Registrarse</a>
+               {% endif %}
+      			</div>
+    		</div>
+		</div>
+		</div>
+	</div>
+  <div class="col-12 mt-5">
+    <div class="card mb-3" >
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{%  static 'appjobcar/bootstrap/imagenes/comparte-coche1.jpg' %}" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">¿Cúales son tus próximos trayectos?</h5>
+            <p class="card-text"  >Ahorra tiempo y costes de desplazamiento</p>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'publicar'%}" class="btn btn-primary" role="button">Publica un viaje</a>
+            {% else %}
+            <a class="btn btn-primary" href="{% url 'registro' %}" role="button">Publica un viaje</a>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<!--CODIGO VENTAJS DE JOBCAR-->
+<div class="col-12 mt-5 mb-4">
+  <h3 class="text-uppercase mb-4">ventajas de viajar con Job<span class="and">&</span>Car</h3>
+  <div class="row row-cols-1 row-cols-md-3">
+  <div class="col mb-4">
+    <div class="card">
+      <img src="{%  static 'appjobcar/bootstrap/imagenes/seguridad2.jpg' %}" class="card-img-top" alt="Seguridad">
+      <div class="card-body">
+        <h5 class="card-title">Seguridad</h5>
+        <p class="card-text ventajas" >Tus viajes estarán asegurados para que no tengas que preocuparte de nada más</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      <img src="{%  static 'appjobcar/bootstrap/imagenes/ubicacion2.jpg' %}" class="card-img-top" alt="Ubicación">
+      <div class="card-body">
+        <h5 class="card-title">Práctico</h5>
+        <p class="card-text ventajas" >Olvidate de perder tiempo en tus desplazamientos y súbete a un coche compartido cerca de ti</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      <img src="{%  static 'appjobcar/bootstrap/imagenes/comunidad2.jpg' %}" class="card-img-top" alt="Comunidad">
+      <div class="card-body">
+        <h5 class="card-title">Comunidad</h5>
+        <p class="card-text ventajas">Conoce a más gente y ayuda al medio ambiente. Además, revisamos todos los perfiles.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

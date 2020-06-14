@@ -1,0 +1,70 @@
+{% load staticfiles %}
+{% block head%}
+<link  rel="stylesheet" href="{%  static 'css/footer.css' %}">
+{% endblock%}
+
+  <div class="container text-center text-md-left footer">
+    <div class="row">
+      <div class="col-md-4 mx-auto">
+        <img src="{%  static 'appjobcar/bootstrap/imagenes/logo-footer.jpg' %}" width="90" height="90">
+        <p class="text">Job&Car es la mejor pagina web para compartir coche en tus trayectos diarios. El servicio es gratuito y ahorarás costes de tiempo y desplazamiento.</p>
+      </div>
+      <hr class="clearfix w-100 d-md-none">
+      <div class="col-md-2 mx-auto mt-4">
+        <ul class="list-unstyled">
+          <li>
+            <a class="link" href="{% url 'preguntas' %}">¿Cómo compartir coche?</a>
+          </li>
+          <li>
+            <a class="link" href="{% url 'sobreNosotros' %}">Sobre nosotros</a>
+          </li>
+          <li>
+            <a class="link" href="{% url 'preguntas' %}">Preguntas frecuentes</a>
+          </li>
+        </ul>
+      </div>
+      <hr class="clearfix w-100 d-md-none">
+      <div class="col-md-2 mx-auto mt-4">
+        <ul class="list-unstyled">
+          <li>
+            <a class="link" href="{% url 'contacto' %}">Contacto</a>
+          </li>
+          <li>
+            <a class="link" href="{% url 'terminos-condiciones' %}">Terminos y condiciones</a>
+          </li>
+        </ul>
+      </div>
+      <hr class="clearfix w-100 d-md-none">
+    </div>
+  </div>
+  <!--Registro-->
+   {% if not request.user.is_authenticated %}
+   <hr>
+  <ul class="list-unstyled list-inline text-center py-2">
+    <li class="list-inline-item">
+      <h5 class="mb-1 tittle" >Registrate gratis</h5>
+    </li>
+    <li class="list-inline-item">
+      <a href="{% url 'registro' %}" class="btn btn-primary btn-rounded">Registro</a>
+    </li>
+  </ul>
+  {% endif %}
+  <hr>
+  <!--Redes sociales-->
+  <ul class="text-center ">
+    <!-- Facebook -->
+    <a class="link social"  href="https://www.facebook.com/JobCar-108964404146697/?view_public_for=108964404146697">
+      <i class="fab fa-facebook-f fa-lg-text mr-md-5 mr-3 fa-2x"> </i>
+    </a>
+    <!-- Twitter -->
+    <a class="link social" href="https://twitter.com/jobandcar">
+      <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+    </a>
+    <!--Instagram-->
+    <a class="link social" href="https://www.instagram.com/jobandcar/?hl=es">
+      <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+    </a>
+  </ul>
+  <div class="footer-copyright text-center py-3">
+    <p class="text">© 2020 Copyright: <a class="link" href="{% url 'home' %}">Job&Car</a></p>
+  </div>

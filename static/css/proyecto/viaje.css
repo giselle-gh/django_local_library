@@ -1,0 +1,17 @@
+span.icon{
+	font-size: 120%; 
+	color: #8F8F8F;
+}
+
+div.borde-azul{
+	width: 19rem; border-top-color: #00AFF5;  
+	border-top-width: 8px;
+}
+a.reservar{
+	padding: 10px 30px; 
+	border-radius: 100px;
+	margin-right: 10px;
+	text-decoration: none; 
+	color: #fff;
+	background: #226172;
+}

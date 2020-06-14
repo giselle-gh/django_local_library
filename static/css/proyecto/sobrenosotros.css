@@ -1,0 +1,65 @@
+body {
+     font-family: 'Open Sans', sans-serif;
+     background-image: linear-gradient(-25deg, #f2f2f2 50%, #00AFF5 50%);
+}
+.contenedor {
+	background-color: #fff;
+	width: 90%;
+	max-width: 1200px;
+	margin: 40px auto;
+	padding: 40px;
+	border-radius: 10px;
+}
+
+.header {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     margin-bottom: 80px;
+}
+
+.nombre {
+	font-size: 25px;
+     font-weight: 600;
+     color: #000;
+	text-decoration: none;
+}
+
+.main {
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+}
+
+
+.contenedor-texto .titulo {
+     font-size: 50px;
+     font-weight: normal;
+     margin-bottom: 40px;
+}
+
+.contenedor-texto .palabra{
+    font-weight: bold;
+    color: #00AFF5;
+    font-style: normal;
+}
+
+.contenedor-texto p {
+     margin-bottom: 40px;
+     line-height: 36px;
+}
+.btn-link {
+     display: inline-block;
+     padding: 10px 30px;
+	border-radius: 100px;
+     margin-right: 10px;
+     text-decoration: none;
+     background: #f2f2f2;
+}
+
+.btn-link:hover,
+.btn-link.activo {
+	color: #fff;
+	background: #00AFF5;
+}

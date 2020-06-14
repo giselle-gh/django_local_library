@@ -1,0 +1,132 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+<link  rel="stylesheet" href="{%  static 'css/proyecto/checkout.css' %}">
+{% endblock %}
+{% block body %}
+<div class="contenedor col-12 p-3 mt-4 mb-4">
+    <h3 class="titulo"><i class="fas fa-lock"></i> Pago seguro</h3>
+</div>
+<div class="col-12">
+    <div class="row">
+        <div class="datos col-md-7 col-sm-12">
+            <div class="row p-3">
+                <h3>Datos de la reserva</h3>
+                <div class="detalle col-12 p-3 mb-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <p>1 plaza x {{trayecto.precio_plaza}}€</p>
+                            <hr>
+                            <p>Total</p>
+                        </div>
+                        <div class="col-6 text-right">
+                            <p>{{trayecto.precio_plaza}}€</p>
+                            <hr>
+                            <p>{{trayecto.precio_plaza}}€</p>
+                        </div>
+                    </div>
+                </div>
+                <h3>Elige el método de pago</h3>
+            </div>
+            <div id="paypal-button-container"></div>
+        </div>
+        <div class="col-md-5 col-sm-12">
+            <div class="card mb-3">
+                <div class="card-header"><h6>Resumen</h6></div>
+                <div class="card-body">
+                    <p class="card-text"><span class="icone"><i class="fas fa-map-pin"></i></span> {{trayecto.hora_recogida|time:"H:i"}} - {{trayecto.origen}}</p>
+                    <p class="card-text"><span class="icone"><i class="fas fa-map-marker-alt"></i></span>  {{trayecto.hora_llegada|time:"H:i"}} - {{trayecto.destino}}</p>
+                    <p class="card-text"><span class="icone"><i class="fas fa-car"></i></span>
+                        {% if coche %}
+                        <span>Modelo: </span>{{coche.modelo}}
+                        {% else %}
+                        Sin especificar
+                        {% endif %}
+                    </p>
+                    <hr>
+                    <p class="card-text text-capitalize">
+                        <img src="{{trayecto.usuario.foto.url}}" width="50" height="50" class="rounded-circle" alt="foto perfil"> {{trayecto.usuario.first_name}} 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %} 
+	 <script src="https://www.paypal.com/sdk/js?client-id=ATKsVVcxV8WGy-KoJR6Ds793NP6wUE4Dxj9z19zpGqp8GGpAGHq80b7zrPzXqa63fhtOOr2HH0zge0CN&currency=EUR"></script>
+
+    <script>
+    	 function getCookie(name) {
+    	 	var cookieValue = null;
+    		if (document.cookie && document.cookie !== '') {
+    			var cookies = document.cookie.split(';');
+    			for (var i = 0; i < cookies.length; i++) {
+    				var cookie = cookies[i].trim();
+    				if (cookie.substring(0, name.length + 1) === (name + '=')) {
+    					cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+    					break;
+    				}
+    			}
+    		}
+    		return cookieValue;
+    	 }
+
+    	 var csrftoken = getCookie('csrftoken');
+
+    	 var precio = "{{trayecto.precio_plaza}}";
+
+    	 var productId = '{{trayecto.id}}'
+
+         var destinatarioId = '{{trayecto.usuario.id}}'
+
+    	 //funcion
+
+    	 function compleateOrder() {
+    	 	var url = "{% url 'detalles' %}"
+    	 	fetch(url, {
+    	 		method : 'POST',
+    	 		headers : {
+    	 			'Content-type': 'application/json; charset=utf-8',
+    	 			'X-CSRFToken' : csrftoken
+    	 		},
+    	 		body: JSON.stringify({'productId': productId, 'cantidad':precio, 'destinatario':destinatarioId}),
+    	 	})
+    	 }
+
+        // Estilos para el botón de paypal
+        paypal.Buttons({
+
+        	style: {
+                color:  'blue',
+                shape:  'pill',
+                label:  'pay',
+                size: 'responsive',
+            },
+
+
+            // Valores para la orden
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: precio
+                        }
+                    }]
+                });
+            },
+
+            // Finalizar la transacion
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    compleateOrder()
+                     alert('Tu pago se ha realizado con exito. En breve recibirás un email de confirmación.');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+
+</div>
+{% endblock %}

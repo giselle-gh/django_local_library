@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!--Navbar para usuario sin loggear-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar fixed-top">
+  <!--NAVBAR PARA USUARIOS SIN INICIAR SESIÓN-->
+  <a class="navbar-brand" href="{% url 'home' %}">
+    <img src="{%  static 'appjobcar/bootstrap/imagenes/icono.jpg' %}" width="30" height="30" class="d-inline-block align-top" alt="logo">
+    Job<span style="color: #22BFCD">&</span>Car
+  </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    {% if request.user.is_authenticated %}
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home" style="color: #226172;"></i> Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'buscar' %}"><i class="fas fa-search"  style="color: #226172;"></i> Buscar</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'publicar' %}"><i class="fas fa-plus-circle" style="color: #226172;"></i> Publicar Viaje</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      {{user.first_name}}
+    </span>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item mr-2 ml-2">
+        <img src="{{user.foto.url}}" width="30" height="30" class="d-inline-block align-self-center rounded-circle">
+      </li>
+      <li class="nav-item">
+        <div class="dropdown dropleft">
+        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <a class="dropdown-item" href="{% url 'perfil' %}" role="button"><span class="mr-1"><i class="far fa-user-circle"  style="color: #226172;"></i></span>Perfil</a>
+        <a class="dropdown-item" href="{% url 'futurosViajes' %}" role="button"><span class="mr-1"><i class="fas fa-route"  style="color: #226172;"></i></span>Futuros viajes</a>
+        <a class="dropdown-item" href="{% url 'cartera' %}" role="button"><span class="mr-1"><i class="fas fa-wallet" style="color: #226172;"></i></span>Cartera</a>
+        <a class="dropdown-item" type="button" href="{% url 'logout' %}"><span class="mr-1"  style="color: #226172;"><i class="fas fa-sign-out-alt"></i></span>Cerrar sesión</a>
+        </div>
+        </div>
+      </li>
+
+    </ul>
+    {% else %}
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'preguntas' %}">FAQs</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <a class="btn btn-outline-primary mr-1" href="{% url 'registro' %}" role="button">Registrarse</a>
+      <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'login' %}" role="button" >Iniciar Sesión</a>
+    </form>
+    {% endif %}
+  </div>
+</nav>

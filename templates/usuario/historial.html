@@ -1,0 +1,56 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+<!--<link  rel="stylesheet" href="{%  static 'css/perfil.css' %}">-->
+{% endblock %}
+{% block body %}
+<div class="col mt-5">
+	<h3>Tus viajes</h3>
+	<hr>
+	{% if viajes_publicados or reservas %}
+	{% for i in viajes_publicados %}
+	<a href="{% url 'viaje' i.id %}" class="text-decoration-none" style="color: #226172;" style="font-family: 'Open Sans', sans-serif;">
+		<div class="shadow-lg p-3 mb-5 bg-white rounded"  style="max-width: 640px;">
+		<div class="mb-3" style="max-width: 1040px;">
+			<div class="row no-gutters">
+				<div class="col-md-8 col-12">
+					<div class="card-body ">
+						<h5 class="card-title" style="font-size: 150%;">{{ i.trayecto.fecha_salida|date:"D d M " }}</h5>
+						<div class="row mb-3 mt-3">
+							<div class="col-4">
+								<p class="card-text"><span class="icon" style="font-size: 120%; color: "><i class="fas fa-map-pin"></i></span> {{i.trayecto.hora_recogida|time:"H:i"}}</p>
+							</div>
+							<div class="col-6">
+								<p class="card-text">{{itrayecto..origen}}</p>
+							</div>
+							<div class="col-2">
+								<p class="card-text text-right font-weight-bold">{{i.trayecto.precio_plaza}}€</p>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-3">
+								<p class="card-text"><span class="icon" style="font-size: 120%; color: "><i class="fas fa-map-marker-alt"></i></span> {{itrayecto..hora_recogida|time:"H:i"}}</p>
+							</div>
+							<div class="col-9">
+								<p class="card-text">{{i.trayecto.destino}}</p>
+							</div>
+						</div>
+						<p class="card-text text-capitalize">
+							<img src="{{i.trayecto.usuario.foto.url}}" width="50" height="50" class="rounded-circle" alt="foto perfil"> {{i.trayecto.usuario.first_name}}
+						</p>
+						<!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</a>
+	{% endfor %}
+	{% else %}
+	<div>
+		<h6 class="text-center mb-3">Aún no has publicado ningún viaje</h6>
+		<img src="{%  static 'appjobcar/bootstrap/imagenes/futuros-viajes.svg' %}" class="rounded mx-auto d-block w-50 "  alt="no hay resultados">
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

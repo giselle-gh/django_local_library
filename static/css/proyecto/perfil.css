@@ -1,0 +1,19 @@
+div.contenedor-ejemplo-foto{
+	 color: #226885;
+}
+
+form, div.coche{
+	background-color: #EDEDED;
+	padding: 5%;
+}
+
+div.elegir-foto{
+	border-color: grey; 
+	border-width: 1px;  
+	border-style: solid; 
+	padding: 4%;
+}
+
+h6{
+	color: #28A745;
+}

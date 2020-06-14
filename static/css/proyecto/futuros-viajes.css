@@ -1,0 +1,17 @@
+a.viaje{
+	color: #226172; 
+	font-family: 'Open Sans', sans-serif;
+}
+
+div.contenedor-viaje{
+	max-width: 640px;
+}
+
+h5.fecha{
+	font-size: 150%;
+}
+
+span.icon{
+	font-size: 120%;
+	color: #8F8F8F;
+}

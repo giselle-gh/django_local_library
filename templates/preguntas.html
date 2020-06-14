@@ -1,0 +1,118 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+<link  rel="stylesheet" href="{%  static 'css/preguntas.css' %}">
+{% endblock %}
+{% block body %}
+<div class="col mt-5 animate__animated animate__fadeIn animate__fast">
+  <h3 class="mt-1">Preguntas frecuentes</h3>
+  <div class="row">
+    <div class="col">
+      <div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Pasajeros
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        <h6>1. ¿Cúando se me cobra?</h6>
+        <p>El cobro del trayecto se realiza en la reserva, al pulsar pagar. Si la reserva no se confirma, el dinero será devuelto en un plazo de 1 a 5 días hábiles, el plazo habitual de transacciones bancarias</p>
+        <h6>2. ¿Cómo reservar un trayecto? </h6>
+        <p>Sigue estos sencillos pasos: abre nuestra pagina web y dinos cuando y donde quieres ir. Una vez que encuentres el mejor trayecto para tus necesidades, sólo tienes que hacer la reserva online.<br>Para reservarla puedes pagar con tu tarjeta o con PayPal. Tu eliges.<br>El conductor recibirá el pago una vez que hayáis viajado juntos.</p>
+        <h6>3. ¿Puedo cancelar un trayecto que ya he pagado?</h6>
+        Sí, para cancelarlo sólo tienes que ir al apartado de <span>Mis viajes</span>.<br>Sólo te pedimos que canceles lo antes posible, ya que facilita las cosas para todos. Además recuerda que reenbolso dependerá del momento en el que canceles. Así es como funciona:<br>
+        <ul>
+          <li>Cancelaciones con más de 24 horas de antelación</li>
+          <p>Te devolvemos tu dinero.</p>
+          <li>Cancelaciones en las 24 horas previas a la reserva</li>
+          <p>Te devolvemos el 50% de la reserva.</p>
+          <li>Cancelaciones en las 24 horas previas a la reserva(cuando se ha hecho la reserva y anulado en un plazo menor o igual a 30 minutos)</li>
+          <p>Te devolvemos el dinero.</p>
+          <li>No presentarse</li>
+          <p>El conductor recibirá el importe total que se ha pagado en la reserva</p>
+        </ul>
+        <h6>4. ¿Qué ocurre si el trayecto se cancela?</h6>
+        <p>Te de volvemos el dinero completo<br>Si el conductor no cancela online debes de avisarnos al número de atención al cliente lo más pronto posible(máximo 24 horas a la hora prevista de salida del trayecto) de que el trayecto no se ha producido</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Conductores
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        <ol>
+          <li>
+            <h6 name="compartirCoche">¿Cómo publico un viaje?</h6>
+            <p>Sólo tienes que iniciar sesión y pulsar el botón <i class="fas fa-plus-circle"></i>. A continuación sigue los siguientes pasos:</p>
+            <ul>
+              <li>Escribe la ubicación de origen y destino.Puedes introducir tu código postal</li>
+              <li>Especifica la fecha, la hora y el número de plazas disponibles, el importe de la aportación y si el viaje es regular u ocasional.</li>
+              <li>Introduce cualquier información relevante en un comentario de tu trayecto</li>
+              <li>Da al botón publicar</li>
+            </ul>
+          </li>
+          <li>
+            <h6>¿Puedo hacer trayectos largos?</h6>
+            <p>Puedes publicar cualquier trayecto que necesites compartir con alguien.</p>
+          </li>
+          <li>
+            <h6>¿Cómo recibo los pagos?</h6>
+            <p>Enviaremos el dinero a tu perfil de usuario 48 horas después de que haya finalizado el trayecto o en el caso de que sea un trayecto diario, al final del mes. A partir de ese momento, rrecibirás el dinero en tu cuenta bancaria en el plazo de 1 a 5 días laborables.<br>Asegurate de que tus datos bancarios sean correctos. Recuerda que debes rellenar todos los campos y guardar los cambios.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Más preguntas
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        <ol>
+          <li>
+            <h6>¿Qué es Job&Car?</h6>
+            <p>La mejor pagina web para compartir coche en tus trayectos diarios<br>¡Despidete de ir solo a trabajar o a la universidad! Job&Car es perfecto para que tanto conductores como pasajeros, ahorren dinero y timepo.</p>
+          </li>
+          <li>
+            <h6>¿Teneís atención al cliente?</h6>
+            <p>Si tienes cualquier problema puedes escribirnos al siguiente correo electronico <a href="mailto:atencioncliente@job&car.com">atencioncliente@job&car.com</a></p>
+          </li>
+          <li>
+            <h6>Información relativa a la epidemia coronavirus</h6>
+            <p>ESTADO DE ALARMA.<br>Estamos siguiendo muy de cerca la situación en torno a la propagación del coronavirus Covid-19, a partir de la cual iremos tomando las medidas necesarias aplicables a nuestra actividad.<br>El Ministerio de Sanidad del Gobierno de España ha decretado la recomendación de NO viajar a no ser que sea imprescindible. Para más información, haz clic en este enlace.<br>Los únicos motivos por los que puedes desplazarte son:
+            <ul>
+              <li>Atención a una persona vulnerable -- mayores, menores, dependientes o personas con discapacidad</li>
+              <li>Para ir a trabajar o volver a tu residencia habitual. Ejemplo: personal sanitario, empleados de comercios de primera necesidad.</li>
+            </ul>
+            <br>
+            Ten en cuenta que puedes ser sancionado por la autoridades competentes en caso de realizar un desplazamiento que no obedezca a estas excepciones. Si necesitas viajar, verás que en la plataforma sólo puede publicarse una plaza por vehículo. Así, sólo podrán viajar el conductor y un pasajero en el asiento trasero y opuesto a él. Como estos mínimos trayectos deben ser absolutamente imprescindibles, hemos eliminado los gastos de gestión de la plataforma. Se han habilitado líneas telefónicas exclusivas para atender dudas sobre la situación del Coronavirus en España.
+            <br>
+            En virtud de la situación existente actualmente en Europa, informamos de que aquellos pasajeros que deseen anular su viajes con salida y/o llegada en las regiones afectadas por la epidemia, podrán hacerlo sin ningún sobrecoste. En cuanto realices la cancelación desde la plataforma, no dudes en contactarnos a través de nuestro correo electrónico 
+            <br>
+            Quedamos a tu disposición para cualquier cuestión a este respecto en nuestro correo elecrónico <a href="mailto:atencioncliente@job&car.com">atencioncliente@job&car.com</a></p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+{% endblock %}

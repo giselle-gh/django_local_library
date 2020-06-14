@@ -1,0 +1,22 @@
+a.link:link, a.link:visited, a.link:active {
+    color: white;
+    text-decoration:none;
+}
+a.link:hover{
+  color: #00AFF5;
+}
+.footer-copyright{
+  background-color: #323741;
+}
+a.social{
+  color: #00AFF5;
+}
+div.footer{
+  font-family: 'Montserrat', sans-serif;
+}
+.text{
+  color: #A2A4A9;
+}
+.tittle{
+  color: #FFFFFF;
+}

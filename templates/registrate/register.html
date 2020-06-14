@@ -1,0 +1,96 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% block head%}
+<link  rel="stylesheet" href="{%  static 'css/proyecto/register.css' %}">
+{% endblock%}
+{% block body %}
+<div class="col-md-7 col-sm-12 mt-5 animate__animated animate__fadeIn animate__fast">
+	<h3 class="text-center mt-4" >Registro</h3>
+	{% if messages %}
+	<div class="row mt-5">
+  		<div class="col-12 mt-2">
+      	{% for message in messages %}
+          <div {% if message.tags %} role="alert" class="alert alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else%}{{ message.tags }}{% endif%}" {% endif %} >
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+          </div>
+      	{% endfor %}
+  		</div>
+	</div>
+	{% endif %}
+	<form class="mt-5" action="{% url 'addUser'%}" method="POST">
+    {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nombre</label>
+      {{form.first_name}}
+    </div>
+    <div class="form-group col-md-6">
+      <label>Apellidos</label>
+      {{form.last_name}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    {{ form.email}}
+  </div>
+  <div class="form-group">
+    <label>Elige un alias</label>
+    {{ form.username}}
+  </div>
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label>Fecha de Nacimiento</label>
+      {{form.fecha_nacimiento}}
+    </div>
+  </div>
+  <div class="form-row genero mb-5" >
+  	<div class="form-group col-md-6 mb-5">
+      <legend class="col-form-label col-sm-2 pt-0">Género</legend>
+      <div class="col-sm-10 col-md-12 mb-5">
+        <div class="form-check">
+          {{form.genero}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Contraseña</label>
+      {{form.password}}
+      <small id="passwordHelpBlock" class="form-text text-muted">
+      La contrsaseña que eligas debe tener entre 8 y 20 caracteres, sin espacios o emojis.
+      </small>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Repita Contraseña</label>
+     <input type="password" name="pass2" class="form-control" min="8" maxlength="128" required="" >
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="g-recaptcha" data-sitekey="6LfHgaMZAAAAANnfgFI8I143YVZ8P6CuNXvLzhy1"></div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+    	{{form.check_terminos}}
+      <label class="form-check-label" for="gridCheck">
+        Acepto los <a href="{% url 'terminos-condiciones' %}">términos y condiciones</a>
+      </label>
+    </div>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Continuar"/>
+
+</form>
+</div>
+<div class="col-md-5 mt-5">
+	<div class="text-center mt-5">
+  <img src="{%  static 'appjobcar/bootstrap/imagenes/registro.jpg' %}" class="rounded img-fluid" alt="registro">
+  <p class="descripcion mt-2" >Registrate y disfruta de todas las ventajas</p>
+</div>
+</div>
+{% endblock %}
+{% block javascripts %}
+ <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
